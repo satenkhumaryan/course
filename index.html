@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ռեբուս</title>
+	<link rel="icon" href="puzzle.png" type="image/png" sizes="16x16">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+<body>
+	<div class="general">
+		<div class="first">		
+			<img src="android.png" height="150px" id="movingImage" style="z-index: -1; background: none; border-radius: 10%;">
+			<div id="ab-me">
+				<p id="p1" style="font-size: 100px; margin: 0;">Ռեբուս</p>
+				<p id="p2" style="font-size: 40px; margin-bottom: 0;">Սաթեն Խումարյան Կարենի</p>
+				<p id="currentDate" style="margin-top: 10px; font-size: 20px;"></p>
+			</div>
+		</div>
+		<div id="menu">
+			<div id="top">
+				<ul id="top-menu">
+					<li style="width: 161px;">
+						<a class="a-hov">Մենյու</a><hr style="margin: 0; border: 1px solid #404040;">
+						<ul id="sub-menu">
+							<li onclick="rebus();">Ռեբուս</li>
+							<li onclick="tip();" id="recommendations">Օրվա խորհուրդներ</li>
+							<li onclick="out();">Ելք</li>
+						</ul>
+					</li>
+					<li style="width: 188.6px;">
+						<a class="a-hov">Օգնություն</a><hr style="margin: 0; border: 1px solid #404040;">
+						<ul id="sub-menu">
+							<li onclick="helpWindow();">Օգնության պատուհան</li>
+							<li onclick="author();">Հեղինակ</li>
+						</ul>
+					</li>
+					<li style="width: 325px;">
+						<a class="a-hov">Պատուհանների դասավորությունը</a><hr style="margin: 0; border: 1px solid #404040;">
+						<ul id="sub-menu">
+							<li onclick="horizontal();" style="width: 320px;">Հորիզոնական</li>
+							<li onclick="minimizeDivs();" style="width: 320px;">Մինիմայզ</li>
+							<li onclick="closeWindows();" style="width: 320px;">Փակել բոլորը</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="part">
+			<div id="help" class="minimize">
+				<p id="help-line">Օգնություն</p>
+				<div id="help-content">
+					<ul>
+						<li>Էջը թարմացնելիս կհայտնվեք ամենասկզբում՝ գովազդի պատուհանում։</li><hr style="margin: 5px; border: 1px solid #404040;">
+						<li>Ռեբուս ենթամենյուի վրա սեղմելով՝ կհայտնվի պատուհան, որը կգտնի VOLVO + FIAT = MOTOR ռեբուսի բոլոր լուծումները։</li><hr style="margin: 5px; border: 1px solid #404040;">
+						<li>Սեղմելով ելք՝ դուրս կգաք ծրագրից և կհայտնվեք գովազդի պատուհանում։</li><hr style="margin: 5px; border: 1px solid #404040;"hr>
+						<li>Հեղինակ ենթամենյուի վրա սեղմելով՝ կհայտնվի պատուհան, որտեղ կլինի հեղանակի վերաբերյալ կարճ ինֆորմացիա։</li><hr style="margin: 5px; border: 1px solid #404040;">
+						<li>Հորիզոնական ենթամենյուի վրա սեղմելով՝ բացված պատուհանները կդասավորվեն հորիզոնական դիրքով։</li><hr style="margin: 5px; border: 1px solid #404040;">
+						<li>Մինիմայզ ենթամենյուի վրա սեղմելով՝ բացված պատուհանները մինիմայզ կլինեն։</li>
+						<input type="submit" name="okAuthor" value="Փակել" onclick="okHelp();" style="padding-left: 25px; padding-right: 25px; padding-top: 10px; padding-bottom: 10px; margin-top: 15px; margin-bottom: 10px;">
+					</ul>
+				</div>
+			</div>
+			<div id="author" class="minimize">
+				<p id="author-line">Հեղինակ</p>
+				<p class="au">Խումարյան Սաթեն Կարենի</p>
+				<p class="au">Երևանի ինֆորմատիկայի պետական քոլեջ</p>
+				<p class="au">01.11 խումբ</p>
+				<p class="au">Ծրագրի վերջնաժամկետը՝ դեկտեմբերի 20</p>
+				<p class="au" id="animateText" style="display: inline; line-height: 30px;">Ռեբուս</p><br>
+				<img src="android.png" style="height: 50px; margin-top: 10px; margin-bottom: 10px;"><br>
+				<input type="submit" name="okAuthor" value="Փակել" onclick="okAuthor();" style="padding-left: 25px; padding-right: 25px; padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px;">
+			</div>
+			<div id="tips" class="minimize">
+				<p id="tips-line">Օրվա խորհուրդներ</p>
+				<div id="tips-part">
+					
+				</div>
+				<div id="btns">
+					<button id="previous-button">◄</button>
+					<button id="next-button">►</button>
+				</div>
+			</div>
+			<div id="rebus" class="minimize">
+				<p id="rebus-line">Ռեբուս</p>
+				<div id="rebusResult">
+
+				</div>
+			</div>
+			<div id="showDivs">
+				<img id="img" src="max.png" style="position: absolute; height: 20px; bottom: 1%; left: 50%; cursor: pointer; visibility: hidden;" onclick="showDivs();">
+			</div>
+		</div>
+		<div id="login">
+			<p id="password">Մուտք</p>
+			<div id="input">
+				<br>
+				<div id="l-p">
+					<div>
+						<label>Օգտանուն</label><br>
+						<input type="text" name="username" placeholder="մուտքագրեք օգտանունը" id="log" style="padding-top: 7px; padding-bottom: 7px; width: 250px;"><br>
+					</div>
+					<div id="inc-log">
+						<p style="margin: 0; padding: 0;">*սխալ օգտանուն</p>
+					</div>
+					<div>
+						<label>Գաղտնաբառ</label><br>
+						<input type="password" name="password" placeholder="մուտքագրեք գաղտնաբառը" id="pas" style="padding-top: 7px; padding-bottom: 7px; width: 250px;">
+					</div>
+					<div id="inc-pas">
+						<p style="margin: 0; padding: 0;">*սխալ գաղտնաբառ</p>
+					</div>
+				</div>
+				<div id="btn">
+					<input type="submit" name="ok" value="Հաստատել" onclick="ok();" style="padding-left: 25px; padding-right: 25px; padding-top: 10px; padding-bottom: 10px; margin-right: 20px; margin-left: 90px;">
+					<input type="submit" name="cancel" value="Չեղարկել" onclick="cancel();" style="padding-left: 25px; padding-right: 25px; padding-top: 10px; padding-bottom: 10px; margin-left: 20px; margin-right: 90px;">
+				</div>
+			</div>
+		</div>
+		
+
+
+		<div id="out">
+			<p id="out-line">Ելք</p>
+			<p id="p-out">Վստա՞հ եք, որ ցանկանում եք դուրս գալ։</p>
+			<div id="btn-out">
+				<input type="submit" name="okOut" value="Հաստատել" onclick="okOut();" style="padding-left: 15px; padding-right: 15px; padding-top: 5px; padding-bottom: 5px; margin-right: 10px; margin-left: 90px;">
+				<input type="submit" name="cancelOut" value="Չեղարկել" onclick="cancelOut();" style="padding-left: 15px; padding-right: 15px; margin-left: 20px; margin-right: 90px;">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<style>
+	
+</style>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Խոյ</p><p style="margin-top: 0;">Օրվա առաջին կեսը բարեհաջող կդասավորվի: Այս ժամանակահատվածում Խոյ նշանի տակ ծնվածներին սպասվում են վառ տպավորություններ և կարևոր ձեռքբերումներ:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Ցուլ</p>Հնարավորինս խուսափեք հապճեպ որոշումներ կայացնելուց: Այն ինչ սկզբում պարզ է թվում, իրականում կարող է շատ բարդ լինել:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Երկվորյակ</p>Օրվա առաջին կեսին հնարավոր է խնդիրներ ծագեն, այն էլ ՝ շատ լուրջ: Այս հատվածում ստիպված կլինենք ուղղել նախկինում թույլ տված սխալները, հատուցել սեփական անփութության և անուշադրության համար:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Խեցգետին</p>Օրվա առաջին կեսին սպասվում են տհաճ անակնկալներ, նաև անհանգստություն, հուզմունք: Մի շտապեք հուսահատվել, քանզի շատ շուտով բացասական միտումների ազդեցությունը կնվազի:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Առյուծ</p>Օրը բարեհաջող չէ հատկապես նրանց համար, ովքեր մեծ ծարագրեր էին կազմել և պատրաստվում էին զբաղվել նոր գործերով:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Կույս</p>Բոլոր կարևոր գործերը, հանդիպումները և ուղևորությունները ծրագրեք օրվա առաջին կեսին, քանզի, ավելի ուշ, բացասական միտումների ազդեցությունը կմեծանա:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Կշեռք</p>Բարեհաջող օր է: Նպատակահարմար՝ հին գործերն ավարտին հասցնելու և նորերին ձեռնամուխ լինելու համար: Էներգիայով լի եք, ձեռքերը ծալած նստել չեք ցանկանա:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Կարիճ</p>Բարեհաջող օր է: Կարող եք տարբեր բնույթի, մեծամասշտաբ նախագծեր իրականացել: Համոզված եղեք, որ հաջողությունն իրեն սպասեցնել չի տա:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Աղեղնավոր</p>Թեև օրը հագեցած չէ վառ իրադարձություններով, այնուամենսյնիվ, հաճելի տպավորություններ կունենաք: Այսօր կարող եք զբաղվել այն ամենով, ինչը հոգեհարազատ է:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Այծեղջյուր</p>Այսօր տհաճ անակնկալներ չեն լինի: Գործերը բարեհաջող կընթանան, կարդարանան ձեր բոլոր սպասելիքները: Նպատակահարմար օր է տնային գործերով զբաղվելու համար:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Ջրհոս</p>Փորձեք մանր խնդիրներին նշանակություն չտալ: Այսօր դրանք կարող են սովորականից շատ լինել: Սակայն դա առիթ չէ ծրագրած գործերը հետաձգելու և զենքերը վայր դնելու համար:',
+    '<p style="font-size: 18px; margin-top: 10px; margin-bottom: 5px;">Ձկներ</p>Ընդհանուր առմամբ, օրը լավ կանցնի: Կհասնեք այն ամենին, ինչին վաղուց ի վեր ձգտել եք: Այդ հարցում ձեզ կօգնեն հարուստ երևակայությունը և մարդկանց ճանաչելու ձեր ունակությունը:' -->
+
+
+
+	<!-- <li>Մուտքի պատուհանում ճիշտ մուքագրելով օգնատունը և գաղտաբառը կհայտնվեք հիմնական էջում։ Հակառակ դեպքում 2 վայրկանից ծրագիրը նորից կսկսի աշխատանքը՝ գնալով գովազդի պատուհան։</li> -->
+	<!-- <li>Օրվա խորհուրդներ ենթամենյուի վրա սեղմելով՝ կհայտնվի պատուհան, որտեղ գրված կլինեն հորոսկոպի նշաններին համապատասխան օրվա խորհուրդները՝ թերթելու հնարավորությամբ։</li> -->
+	<!-- <li>Օգնության պատուհան ենթամենյուի վրա սեղմելով՝ կհայտնվի այս պատուհանը, որտեղ մանրամասն գրված է թե ինչպես է աշխատում ծրագիրը։</li> -->
+	<!-- <li>Փակել բոլորը ենթամենյուի վրա սեղմելով՝ բոլոր բացված պատուհանները կփակվեն։</li> -->
